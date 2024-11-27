@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Toggle Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+
+body {
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.menu-container {
+    position: relative;
+}
+
+.menu-toggle {
+    position: fixed; 
+    top: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.menu-content {
+    position: fixed; 
+    top: 0;
+    left: -200px; 
+    width: 200px; 
+    height: 100%; 
+    background-color: #333;
+    overflow-y: auto;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease; 
+    transform: translateX(0); 
+}
+
+.menu-content.show {
+    transform: translateX(200px); 
+    left: 0;
+}
+
+.menu-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    border-bottom: 1px solid #444;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-content a:hover {
+    background-color: #555;
+    transform: translateX(10px);
+}
+center{
+    padding-left: 100px;
+}
+
+
+.search-bar{
+    width: 100%;
+    max-width: 700px;
+    height: 8%;
+    max-height: 700px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    border-radius: 60px;
+    padding: 10px 20px;
+    align-items: center;
+}
+.search-bar input{
+    background: transparent;
+    flex : 1;
+    border : 0;
+    outline: none;
+    padding: 24px 20px;
+    font-size: 20px;
+}
+
+.search-bar button{
+    border : 0;
+    border-radius: 50%;
+    width : 60px;
+    height : 60px;
+    background: white;
+    cursor: pointer;
+}
+.reactions{
+    border : 0;
+    border-radius: 50%;
+    width : 60px;
+    height : 60px;
+    background: white;
+    cursor: pointer;
+}
+ /* Initially hide the elements you want to display later */
+ .reaction-section {
+            display: none;
+        }
+
+</style>
+<body>
+    <div class="menu-container">
+        <button class="menu-toggle" onclick="toggleMenu()">☰ Open Menu</button>
+        <div class="menu-content" id="menu">
+            <a href="HOME.html">🏠 Home</a>
+            <a href="#about">ℹ️ About</a>
+            <a href="#services">💼 Services</a>
+            <a href="#contact">📞 Contact</a>
+        </div>
+    </div>
+    <center>
+        <form action="/search" method="get" class="search-bar">
+            <input type="text" name="q" placeholder="Search... ">
+            <button type="submit">
+                <img src="c:\Users\Padmini\Downloads\searchiconasep1homepage.jpg" height="40" width="40">
+            </button>
+        </form>
+        <br><br>
+
+        <!-- Reaction buttons -->
+        <textarea rows="30" cols="100" readonly="readonly" style="resize: none;"></textarea><br>
+        <button type="submit">
+            <img src="c:\Users\Padmini\Downloads\likesasep1homepage.jpg" height="40" width="40" class="reactions">
+        </button>
+        <textarea rows="2" cols="10" readonly="readonly" style="resize: none;"></textarea>
+
+        <button type="submit">
+            <img src="c:\Users\Padmini\Downloads\dislikeasep1homepage.jpg" height="40" width="40" class="reactions">
+        </button>
+        <textarea rows="2" cols="10" readonly="readonly" style="resize: none;"></textarea>
+
+        <button type="submit" onclick="showReactions(); return false;">
+            <img src="c:\Users\Padmini\Downloads\commentasep1homepage.jpg" height="40" width="40" class="reactions">
+        </button>
+        <textarea rows="2" cols="10" readonly="readonly" style="resize: none;"></textarea>
+
+        <button type="submit">
+            <img src="c:\Users\Padmini\Downloads\attachmentsasep1homepage.jpg" height="40" width="40" class="reactions">
+        </button><br>
+
+        <!-- Reaction Section (hidden by default) -->
+        <div class="reaction-section" id="reactionSection">
+            <textarea rows="10" cols="100" style="resize: none;"></textarea><br>
+
+            <form class="search-bar">
+                ADD A COMMENT<input type="text">
+                <button type="submit">
+                    <img src="c:\Users\Padmini\Downloads\submitasep1homepage.webp" height="40" width="40">
+                </button>
+            </form>
+
+            <!-- Close Button to Hide the Reaction Section -->
+            <button onclick="closeReactions(); return false;">Close</button>
+        </div>
+    </center>
+    <script src="HOMEJavascript.js"></script>
+</body>
+</html>
