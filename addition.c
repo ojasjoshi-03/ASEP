@@ -9,5 +9,5 @@ int main()
 
     sum=a+b;
 
-    printf("addition is %d",sum);
+    printf("addition is of 2 nos %d",sum);
 }
